@@ -42,16 +42,6 @@ document.addEventListener('keydown', e => {
 /* ----------------------------------------
    Demo 4: Show Time (12-hour format + day)
 ----------------------------------------- */
-document.getElementById('btnTime').addEventListener('click', () => {
-  const now = new Date()
-  const time = now.toLocaleTimeString([], {
-    hour: 'numeric',
-    minute: '2-digit'
-  })
-  const day = now.toLocaleDateString([], { weekday: 'long' })
-
-  render(`<p>It is ${time} on ${day}.</p>`)
-})
 
 
 /* -------------------------
@@ -62,7 +52,7 @@ document.getElementById('btnClear').addEventListener('click', () => {
 })
 
 /* =================================================
-   🔥 Event Listeners Challenge (Pick ONE to complete)
+    Event Listeners Challenge (Pick ONE to complete)
 
    Option A — Hover Highlight + Counter
    - Create a variable to track how many times the card was hovered
