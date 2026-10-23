@@ -8,20 +8,50 @@ function render (html) {
 -------------------------------- */
 let clickCount = 0
 
+document.getElementById('btnClick').addEventListener('click', () => {
+  clickCount++
+ 
+  render(
+   `<p> You clicked my button! It's been clicked ${clickCount} time${clickCount === 1 ? '' : 's'}.</p>`)
+})
 
 /* --------------------------------------
    Demo 2: Double-click (toggle highlight)
 --------------------------------------- */
+const dblCard = document.getElementById('dblCard')
 
+dblCard.addEventListener('dblclick', () => {
+  dblCard.classList.toggle('activated')
+  const state = dblCard.classList.contains('activated') ? 'activated' : 'deactivated'
+  render(`<p>Card is now <strong>${state}</strong>.</p>`)
+})
 
 /* --------------------------------
    Demo 3: Keypress (show key/code)
 --------------------------------- */
+const kbKey = document.getElementById('kbKey')
+const kbCode = document.getElementById('kbCode')
+
+document.addEventListener('keydown', e => {
+  kbKey.textContent = e.key
+  kbCode.textContent = e.code
+  render(`<p>You pressed <strong>${e.key}</strong> (code: <strong>${e.code}</strong>).</p>`)
+})
 
 
 /* ----------------------------------------
    Demo 4: Show Time (12-hour format + day)
 ----------------------------------------- */
+document.getElementById('btnTime').addEventListener('click', () => {
+  const now = new Date()
+  const time = now.toLocaleTimeString([], {
+    hour: 'numeric',
+    minute: '2-digit'
+  })
+  const day = now.toLocaleDateString([], { weekday: 'long' })
+
+  render(`<p>It is ${time} on ${day}.</p>`)
+})
 
 
 /* -------------------------
